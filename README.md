@@ -1,2 +1,3 @@
 # ProLocoZagarolo1
-Sito web proloco zagarolo in prova
+Buongiorno, questa è la repository per il sito web proloco Zagarolo, ancora in prova.
+Ogni modifica va effettuata tramite commit in cui vengono SPECIFICATE le modifiche effettuate, così nel caso di ripristino di un brench non si fa confusione... 
