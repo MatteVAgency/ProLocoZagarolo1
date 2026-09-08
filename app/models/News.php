@@ -20,6 +20,11 @@ class News
         return $this->db->query("SELECT * FROM news ORDER BY created_at DESC")->fetchAll();
     }
 
+    public function countPublished(): int
+    {
+        return (int)$this->db->query("SELECT COUNT(*) FROM news WHERE status='published'")->fetchColumn();
+    }
+
     public function findBySlug(string $slug): ?array
     {
         $stmt = $this->db->prepare("SELECT * FROM news WHERE slug=? AND status='published' LIMIT 1");
@@ -32,6 +37,18 @@ class News
         $stmt = $this->db->prepare("SELECT * FROM news WHERE id=?");
         $stmt->execute([$id]);
         return $stmt->fetch() ?: null;
+    }
+
+    public function slugExists(string $slug, ?int $excludeId = null): bool
+    {
+        if ($excludeId !== null) {
+            $stmt = $this->db->prepare("SELECT id FROM news WHERE slug=? AND id<>? LIMIT 1");
+            $stmt->execute([$slug, $excludeId]);
+        } else {
+            $stmt = $this->db->prepare("SELECT id FROM news WHERE slug=? LIMIT 1");
+            $stmt->execute([$slug]);
+        }
+        return (bool)$stmt->fetch();
     }
 
     public function create(array $data): int
