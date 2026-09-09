@@ -1,0 +1,14 @@
+/* ==========================================================================
+   admin.css — Stili ESCLUSIVI dell'area amministrativa
+   Caricato in aggiunta a base.css in app/views/auth/login.php,
+   app/views/admin/dashboard.php e app/views/admin/form.php
+   ========================================================================== */
+
+.hint{color:#777;font-size:12px}
+
+.admin-table-wrap{overflow:auto;background:#fff}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th,.admin-table td{text-align:left;padding:15px;border-bottom:1px solid #ddd}
+.admin-table a{color:var(--accent);font-weight:700}
+.inline{display:inline}
+.inline button{border:0;background:none;color:#a33;cursor:pointer;font:inherit}

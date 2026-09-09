@@ -1,0 +1,26 @@
+/* ==========================================================================
+   home.css — Stili ESCLUSIVI della Homepage (index)
+   Caricato in aggiunta a base.css solo in app/views/home/index.php
+   ========================================================================== */
+
+/* Hero iniziale */
+.hero{min-height:700px;display:flex;align-items:center;position:relative;color:#fff;background:linear-gradient(120deg,#171717,#51483b);overflow:hidden}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(circle at 75% 45%,rgba(167,122,50,.3),transparent 34%)}
+.hero:after{content:'Z';position:absolute;right:6%;bottom:-18%;font:700 520px/1 'Playfair Display';opacity:.08}
+.hero-content{position:relative;z-index:1;padding-top:80px}
+.hero h1{font:700 clamp(45px,7vw,78px)/1.03 'Playfair Display';margin:0 0 22px}
+.hero .eyebrow{color:#d8b87b}
+.hero p{max-width:560px;font-size:18px;color:#e6e1d9}
+
+/* Intestazione della sezione "Ultime news" */
+.section-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:35px}
+
+/* Sezione "Orari" mostrata in home */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hours-card{border-top:2px solid var(--ink)}
+.hours-card div{display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid #ccc}
+
+@media(max-width:800px){
+  .info-grid{grid-template-columns:1fr;gap:35px}
+  .section-heading{align-items:start;gap:20px;flex-direction:column}
+}

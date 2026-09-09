@@ -1,80 +1,67 @@
-<?php require __DIR__ . '/../layouts/header.php'; ?>
+<?php $pageTitle = 'Chi siamo — Pro Loco Zagarolo'; $pageCss = 'chi-siamo'; require __DIR__.'/../layouts/header.php'; ?>
 
 <section class="page-head">
     <div class="container">
         <p class="eyebrow">CHI SIAMO</p>
-        <h1>La Pro Loco di Zagarolo.</h1>
-        <p>Cultura, territorio e comunità: la nostra storia e la nostra missione.</p>
+        <h1>La nostra storia,<br>il nostro territorio.</h1>
     </div>
 </section>
 
 <section class="section">
     <div class="container split">
         <div>
-            <p class="eyebrow">LA NOSTRA STORIA</p>
-            <h2>Da sempre al servizio del territorio.</h2>
-            <p>La Pro Loco di Zagarolo nasce dalla volontà di cittadini e appassionati di valorizzare il patrimonio storico, artistico e culturale del paese, promuovendo iniziative capaci di unire residenti e visitatori.</p>
-            <p>Nel corso degli anni l'associazione ha organizzato eventi, manifestazioni e attività di promozione turistica, diventando un punto di riferimento per chi vuole scoprire Zagarolo.</p>
+            <p class="eyebrow">LA NOSTRA MISSION</p>
+            <h2>Valorizzare Zagarolo.</h2>
+            <p>
+                La Pro Loco di Zagarolo è un'associazione che promuove il territorio,
+                la cultura e le tradizioni locali, creando occasioni di incontro e
+                partecipazione per cittadini e visitatori.
+                <!-- TODO: sostituire con il testo definitivo fornito dalla Pro Loco -->
+            </p>
         </div>
         <div class="quote-card">
-            <span aria-hidden="true">&ldquo;</span>
-            <p>Raccontare Zagarolo, un'iniziativa alla volta.</p>
+            <span>&ldquo;</span>
+            <p>Valorizzare Zagarolo significa raccontarne la storia e costruirne insieme il futuro.</p>
         </div>
     </div>
 </section>
 
 <section class="section section-soft">
     <div class="container">
-        <div class="section-heading">
-            <div>
-                <p class="eyebrow">MISSION E OBIETTIVI</p>
-                <h2>Cosa ci muove</h2>
+        <p class="eyebrow">COSA FACCIAMO</p>
+        <h2>Le nostre attività.</h2>
+        <div class="value-grid">
+            <div class="value-card">
+                <h3>Eventi e iniziative</h3>
+                <p>Organizziamo eventi culturali e ricreativi durante tutto l'anno.
+                <!-- TODO: contenuto definitivo --></p>
             </div>
-        </div>
-        <div class="cards-grid">
-            <div class="info-card">
+            <div class="value-card">
                 <h3>Promozione del territorio</h3>
-                <p>Far conoscere le bellezze storiche, artistiche e naturalistiche di Zagarolo a residenti e visitatori.</p>
+                <p>Raccontiamo la storia, i luoghi e le tradizioni di Zagarolo.
+                <!-- TODO: contenuto definitivo --></p>
             </div>
-            <div class="info-card">
-                <h3>Cultura e tradizioni</h3>
-                <p>Custodire e valorizzare le tradizioni locali attraverso eventi, iniziative e momenti di condivisione.</p>
-            </div>
-            <div class="info-card">
+            <div class="value-card">
                 <h3>Comunità e partecipazione</h3>
-                <p>Creare occasioni di incontro tra cittadini, associazioni e istituzioni del territorio.</p>
+                <p>Creiamo occasioni di incontro tra cittadini, associazioni e visitatori.
+                <!-- TODO: contenuto definitivo --></p>
             </div>
         </div>
     </div>
 </section>
 
 <section class="section">
-    <div class="container">
-        <div class="section-heading">
-            <div>
-                <p class="eyebrow">ATTIVITÀ</p>
-                <h2>Cosa facciamo</h2>
-            </div>
-        </div>
-        <ul class="check-list">
-            <li>Organizzazione di eventi culturali e manifestazioni popolari.</li>
-            <li>Promozione turistica del territorio di Zagarolo.</li>
-            <li>Collaborazione con scuole, associazioni e istituzioni locali.</li>
-            <li>Comunicazione e informazione attraverso il sito e i canali social.</li>
-            <li>Supporto alle iniziative di valorizzazione del patrimonio locale.</li>
-        </ul>
+    <div class="container narrow">
+        <p class="eyebrow">INFORMAZIONI ISTITUZIONALI</p>
+        <h2>La nostra storia.</h2>
+        <p>
+            <!-- TODO: inserire qui la storia della Pro Loco, anno di fondazione,
+                 organigramma/membri se previsti, con i contenuti definitivi. -->
+            Spazio dedicato alla storia della Pro Loco di Zagarolo: fondazione,
+            tappe principali e persone che ne hanno fatto parte nel tempo.
+        </p>
+        <a class="text-link" href="<?= url('/contatti') ?>">Contattaci →</a>
     </div>
 </section>
 
-<section class="section section-soft">
-    <div class="container contact-box" style="text-align:center">
-        <p class="eyebrow">VUOI SAPERNE DI PIÙ?</p>
-        <h2>Unisciti a noi o contattaci per informazioni.</h2>
-        <div class="actions" style="justify-content:center">
-            <a class="btn primary" href="<?= url('/contatti') ?>">Contattaci</a>
-            <a class="btn ghost-dark" href="<?= url('/news') ?>">Leggi le news</a>
-        </div>
-    </div>
-</section>
-
-<?php require __DIR__ . '/../layouts/footer.php'; ?>
+<?php require __DIR__.'/../layouts/footer.php'; ?>

@@ -8,10 +8,10 @@ if ($base && $base !== '/' && str_starts_with($uri, $base)) {
 }
 
 require_once __DIR__ . '/../app/controllers/HomeController.php';
+require_once __DIR__ . '/../app/controllers/PageController.php';
 require_once __DIR__ . '/../app/controllers/NewsController.php';
 require_once __DIR__ . '/../app/controllers/ContactController.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
-require_once __DIR__ . '/../app/controllers/PageController.php';
 
 switch (true) {
     case $uri === '/' || $uri === '/index.php':
@@ -19,9 +19,6 @@ switch (true) {
         break;
     case $uri === '/chi-siamo':
         (new PageController())->chiSiamo();
-        break;
-    case $uri === '/orari':
-        (new PageController())->orari();
         break;
     case $uri === '/news':
         (new NewsController())->index();
@@ -55,5 +52,5 @@ switch (true) {
         break;
     default:
         http_response_code(404);
-        require __DIR__ . '/../app/views/errors/404.php';
+        echo '404 — Pagina non trovata';
 }

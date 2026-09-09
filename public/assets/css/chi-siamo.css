@@ -1,0 +1,15 @@
+/* ==========================================================================
+   chi-siamo.css — Stili ESCLUSIVI della pagina "Chi siamo"
+   Caricato in aggiunta a base.css solo in app/views/page/chi-siamo.php
+   (.split e .quote-card sono già in base.css perché condivisi con la home)
+   ========================================================================== */
+
+/* Griglia "cosa facciamo" / mission */
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:10px}
+.value-card{background:#fff;padding:28px;border-top:3px solid var(--accent)}
+.value-card h3{margin:0 0 8px;font-size:19px}
+.value-card p{color:var(--muted);font-size:14px;margin:0}
+
+@media(max-width:800px){
+  .value-grid{grid-template-columns:1fr}
+}
