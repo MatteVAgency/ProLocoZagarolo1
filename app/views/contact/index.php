@@ -49,4 +49,4 @@ require __DIR__ . '/../layouts/header.php';
     </div>
 </section>
 
-<?php require __DIR__ . '/../layouts/footer.php'; ?>
+<?php require __DIR__ . '../../layouts/footer.php'; ?>

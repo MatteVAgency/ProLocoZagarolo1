@@ -34,5 +34,4 @@
         <p>Gli orari possono subire variazioni in occasione di eventi, festività o manifestazioni organizzate dalla Pro Loco. Eventuali chiusure straordinarie verranno comunicate tramite il sito e i canali ufficiali.</p>
     </div>
 </section>
-
-<?php require __DIR__ . '/../layouts/footer.php'; ?>
+<?php require __DIR__ . '/layouts/footer.php'; ?>

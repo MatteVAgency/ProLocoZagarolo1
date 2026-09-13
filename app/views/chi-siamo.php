@@ -63,5 +63,4 @@
         <a class="text-link" href="<?= url('/contatti') ?>">Contattaci →</a>
     </div>
 </section>
-
-<?php require __DIR__.'/../layouts/footer.php'; ?>
+<?php require __DIR__ . '/layouts/footer.php'; ?>
