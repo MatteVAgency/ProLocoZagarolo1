@@ -5,6 +5,13 @@ class PageController
 {
     public function chiSiamo(): void
     {
-        require __DIR__ . '/../views/page/chi-siamo.php';
+        $pageTitle = 'Chi siamo — Pro Loco Zagarolo';
+        require __DIR__ . '/../views/chi-siamo.php';
+    }
+
+    public function orari(): void
+    {
+        $pageTitle = 'Orari — Pro Loco Zagarolo';
+        require __DIR__ . '/../views/orari.php';
     }
 }

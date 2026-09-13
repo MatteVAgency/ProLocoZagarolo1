@@ -1,4 +1,4 @@
-<?php $pageTitle='Login Admin'; require __DIR__.'/../layouts/header.php'; ?>
+<?php $pageTitle='Login Admin'; $pageCss='admin'; require __DIR__.'/../layouts/header.php'; ?>
 <section class="section"><div class="container narrow"><p class="eyebrow">AREA AMMINISTRATIVA</p><h1>Accedi</h1>
 <?php if($error): ?><p class="form-error"><?= e($error) ?></p><?php endif; ?>
 <form class="contact-form" method="post"><input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">

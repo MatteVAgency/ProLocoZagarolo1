@@ -1,4 +1,4 @@
-<?php $pageTitle='Dashboard Admin'; require __DIR__.'/../layouts/header.php'; ?>
+<?php $pageTitle='Dashboard Admin'; $pageCss='admin'; require __DIR__.'/../layouts/header.php'; ?>
 <section class="page-head"><div class="container"><p class="eyebrow">AREA AMMINISTRATIVA</p><h1>Dashboard</h1><p>Benvenuto, <?= e($_SESSION['admin_name'] ?? 'admin') ?>.</p>
 <a class="btn primary" href="<?= url('/admin/news/create') ?>">+ Nuova news</a> <a class="btn dark" href="<?= url('/admin/logout') ?>">Logout</a></div></section>
 <section class="section"><div class="container"><div class="admin-table-wrap"><table class="admin-table">

@@ -1,75 +1,52 @@
 <?php
-declare(strict_types=1);
-session_start();
+$pageCss = 'contatti';
+require __DIR__ . '/../layouts/header.php';
+?>
 
-require_once __DIR__ . '/../config/database.php';
+<section class="page-head">
+    <div class="container">
+        <p class="eyebrow">CONTATTI</p>
+        <h1>Parliamo di Zagarolo.</h1>
+        <p>Per informazioni, collaborazioni o richieste, inviaci un messaggio.</p>
+    </div>
+</section>
 
-function csrf_token(): string {
-    if (empty($_SESSION['csrf'])) $_SESSION['csrf'] = bin2hex(random_bytes(32));
-    return $_SESSION['csrf'];
-}
-function verify_csrf(?string $token): bool {
-    return is_string($token) && hash_equals($_SESSION['csrf'] ?? '', $token);
-}
-function e(?string $value): string {
-    return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
-}
-function url(string $path = '/'): string {
-    $base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-    return ($base === '' ? '' : $base) . $path;
-}
+<section class="section contact-section">
+    <div class="container contact-grid">
+        <div>
+            <div class="contact-list">
+                <p>📍 Zagarolo, Roma</p>
+                <p>✉️ info@prolocozagarolo.it</p>
+                <p>☎️ +39 000 000 0000</p>
+            </div>
+        </div>
 
-/**
- * Validazione e salvataggio di un'immagine caricata (RF-04 / RNF-05).
- * Ritorna il percorso relativo salvato (es. "assets/uploads/news/xxx.jpg") o null.
- */
-function handle_news_image_upload(array $file, ?string $previousImage = null): ?string {
-    if (empty($file) || ($file['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
-        return $previousImage;
-    }
-    if ($file['error'] !== UPLOAD_ERR_OK) {
-        throw new RuntimeException('Errore durante il caricamento del file.');
-    }
+        <form class="contact-form" action="<?= url('/contatti/invia') ?>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
 
-    $maxSize = 3 * 1024 * 1024; // 3MB
-    if ($file['size'] > $maxSize) {
-        throw new RuntimeException('L\'immagine supera la dimensione massima di 3MB.');
-    }
+            <?php if (!empty($error)): ?>
+                <p class="form-error"><?= e($error) ?></p>
+            <?php endif; ?>
 
-    $allowed = [
-        'image/jpeg' => 'jpg',
-        'image/png'  => 'png',
-        'image/webp' => 'webp',
-    ];
+            <?php if (!empty($success)): ?>
+                <p class="form-success"><?= e($success) ?></p>
+            <?php endif; ?>
 
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
-    $mime = $finfo->file($file['tmp_name']);
-    if (!isset($allowed[$mime])) {
-        throw new RuntimeException('Formato immagine non consentito (usa JPG, PNG o WEBP).');
-    }
+            <div class="form-row">
+                <input required name="nome" placeholder="Nome" value="<?= e($_POST['nome'] ?? '') ?>">
+                <input required name="cognome" placeholder="Cognome" value="<?= e($_POST['cognome'] ?? '') ?>">
+            </div>
+            <input required type="email" name="email" placeholder="Email" value="<?= e($_POST['email'] ?? '') ?>">
+            <input name="oggetto" placeholder="Oggetto" value="<?= e($_POST['oggetto'] ?? '') ?>">
+            <textarea required name="messaggio" rows="5" placeholder="Messaggio"><?= e($_POST['messaggio'] ?? '') ?></textarea>
 
-    [$w, $h] = @getimagesize($file['tmp_name']) ?: [0, 0];
-    if ($w < 1 || $h < 1) {
-        throw new RuntimeException('Il file caricato non è un\'immagine valida.');
-    }
+            <label class="check">
+                <input type="checkbox" name="consenso" required> Acconsento al trattamento dei dati.
+            </label>
 
-    $ext = $allowed[$mime];
-    $filename = bin2hex(random_bytes(12)) . '.' . $ext;
-    $destDir = __DIR__ . '/assets/uploads/news';
-    if (!is_dir($destDir)) mkdir($destDir, 0755, true);
-    $dest = $destDir . '/' . $filename;
+            <button class="btn primary">Invia richiesta</button>
+        </form>
+    </div>
+</section>
 
-    if (!move_uploaded_file($file['tmp_name'], $dest)) {
-        throw new RuntimeException('Impossibile salvare l\'immagine.');
-    }
-
-    // Rimuove la vecchia immagine se presente
-    if ($previousImage) {
-        $old = __DIR__ . '/' . $previousImage;
-        if (is_file($old)) @unlink($old);
-    }
-
-    return 'assets/uploads/news/' . $filename;
-}
-
-require_once __DIR__ . '/../routes/web.php';
+<?php require __DIR__ . '/../layouts/footer.php'; ?>

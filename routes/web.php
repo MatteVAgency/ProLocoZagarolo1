@@ -20,6 +20,9 @@ switch (true) {
     case $uri === '/chi-siamo':
         (new PageController())->chiSiamo();
         break;
+    case $uri === '/orari':
+        (new PageController())->orari();
+        break;
     case $uri === '/news':
         (new NewsController())->index();
         break;
@@ -52,5 +55,6 @@ switch (true) {
         break;
     default:
         http_response_code(404);
-        echo '404 — Pagina non trovata';
+        $pageTitle = 'Pagina non trovata — Pro Loco Zagarolo';
+        require __DIR__ . '/../app/views/errors/404.php';
 }

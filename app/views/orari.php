@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/../layouts/header.php'; ?>
+<?php $pageTitle = $pageTitle ?? 'Orari — Pro Loco Zagarolo'; require __DIR__ . '/layouts/header.php'; ?>
 
 <section class="page-head">
     <div class="container">
