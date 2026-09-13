@@ -5,9 +5,22 @@ final class User
 {
     public function __construct(private PDO $db)
     {
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        // Impostazioni PDO sicure
+        $this->db->setAttribute(
+            PDO::ATTR_ERRMODE,
+            PDO::ERRMODE_EXCEPTION
+        );
+
+        $this->db->setAttribute(
+            PDO::ATTR_DEFAULT_FETCH_MODE,
+            PDO::FETCH_ASSOC
+        );
+
+        // Disabilita prepared statements emulati
+        $this->db->setAttribute(
+            PDO::ATTR_EMULATE_PREPARES,
+            false
+        );
     }
 
     /**
@@ -19,6 +32,7 @@ final class User
     {
         $login = trim($login);
 
+        // Controllo input
         if ($login === '' || mb_strlen($login) > 255) {
             return null;
         }
@@ -50,7 +64,7 @@ final class User
             return $user !== false ? $user : null;
 
         } catch (PDOException $e) {
-            // Non mostrare dettagli SQL all'utente.
+            // Non mostrare informazioni del database all'utente.
             error_log(
                 'User::findByLogin database error: ' . $e->getMessage()
             );
