@@ -17,7 +17,7 @@ require __DIR__ . '/../layouts/header.php';
             <div class="contact-list">
                 <p>📍 Zagarolo, Roma</p>
                 <p>✉️ info@prolocozagarolo.it</p>
-                <p>☎️ +39 000 000 0000</p>
+                <p>☎️ 06 9576 9413</p>
             </div>
         </div>
 
