@@ -16,7 +16,7 @@
             <p>La sede della Pro Loco di Zagarolo è aperta al pubblico secondo i seguenti orari. Per informazioni urgenti puoi sempre scriverci o chiamarci.</p>
             <ul class="check-list">
                 <li>Indirizzo: Piazza Indipendenza 6, Zagarolo (RM)</li>
-                <li>Telefono: +39 000 000 0000</li>
+                <li>Telefono: 06 9576 9413</li>
                 <li>Email: info@prolocozagarolo.it</li>
             </ul>
             <a class="text-link" href="<?= url('/contatti') ?>">Vai alla pagina contatti →</a>

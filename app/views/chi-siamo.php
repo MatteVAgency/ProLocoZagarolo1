@@ -1,4 +1,4 @@
-<?php $pageTitle = 'Chi siamo — Pro Loco Zagarolo'; $pageCss = 'chi-siamo'; require __DIR__.'/../layouts/header.php'; ?>
+<?php $pageTitle = 'Chi siamo — Pro Loco Zagarolo'; $pageCss = 'chi-siamo'; require __DIR__.'/layouts/header.php'; ?>
 
 <section class="page-head">
     <div class="container">
