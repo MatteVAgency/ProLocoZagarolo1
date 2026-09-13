@@ -1,80 +1,215 @@
 <?php
-declare(strict_types=1);
+$pageCss = 'home';
+require __DIR__ . '/../layouts/header.php';
+?>
 
-// Segna che l'app è partita correttamente da qui (public/index.php).
-// Le viste/i layout controllano questa costante per evitare l'accesso diretto ai file.
-define('APP_BOOTSTRAPPED', true);
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-overlay"></div>
 
-session_start();
+    <div class="container hero-content">
+        <p class="eyebrow">PRO LOCO DI ZAGAROLO</p>
 
-//require_once __DIR__ . '/../config/database.php';
+        <h1>
+            Il cuore di Zagarolo,<br>
+            <em>vissuto insieme.</em>
+        </h1>
 
-function csrf_token(): string {
-    if (empty($_SESSION['csrf'])) $_SESSION['csrf'] = bin2hex(random_bytes(32));
-    return $_SESSION['csrf'];
-}
-function verify_csrf(?string $token): bool {
-    return is_string($token) && hash_equals($_SESSION['csrf'] ?? '', $token);
-}
-function e(?string $value): string {
-    return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
-}
-function url(string $path = '/'): string {
-    $base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-    return ($base === '' ? '' : $base) . $path;
-}
+        <p>
+            Informazioni, iniziative, eventi e comunicazioni
+            della Pro Loco.
+        </p>
 
-/**
- * Validazione e salvataggio di un'immagine caricata per una news (RF-04 / RNF-05).
- * Ritorna il percorso relativo salvato (es. "assets/uploads/news/xxx.jpg") o
- * l'immagine precedente se non è stato caricato nulla di nuovo.
- */
-function handle_news_image_upload(array $file, ?string $previousImage = null): ?string {
-    if (empty($file) || ($file['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
-        return $previousImage;
-    }
-    if ($file['error'] !== UPLOAD_ERR_OK) {
-        throw new RuntimeException('Errore durante il caricamento del file.');
-    }
+        <div class="actions">
+            <a class="btn primary" href="<?= url('/news') ?>">
+                Scopri le news
+            </a>
 
-    $maxSize = 3 * 1024 * 1024; // 3MB
-    if ($file['size'] > $maxSize) {
-        throw new RuntimeException('L\'immagine supera la dimensione massima di 3MB.');
-    }
+            <a class="btn ghost" href="<?= url('/contatti') ?>">
+                Contattaci
+            </a>
+        </div>
+    </div>
+</section>
 
-    $allowed = [
-        'image/jpeg' => 'jpg',
-        'image/png'  => 'png',
-        'image/webp' => 'webp',
-    ];
 
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
-    $mime = $finfo->file($file['tmp_name']);
-    if (!isset($allowed[$mime])) {
-        throw new RuntimeException('Formato immagine non consentito (usa JPG, PNG o WEBP).');
-    }
+<!-- CHI SIAMO -->
+<section id="chi-siamo" class="section">
+    <div class="container split">
 
-    [$w, $h] = @getimagesize($file['tmp_name']) ?: [0, 0];
-    if ($w < 1 || $h < 1) {
-        throw new RuntimeException('Il file caricato non è un\'immagine valida.');
-    }
+        <div>
+            <p class="eyebrow">CHI SIAMO</p>
 
-    $ext = $allowed[$mime];
-    $filename = bin2hex(random_bytes(12)) . '.' . $ext;
-    $destDir = __DIR__ . '/assets/uploads/news';
-    if (!is_dir($destDir)) mkdir($destDir, 0755, true);
-    $dest = $destDir . '/' . $filename;
+            <h2>Una realtà per il territorio.</h2>
 
-    if (!move_uploaded_file($file['tmp_name'], $dest)) {
-        throw new RuntimeException('Impossibile salvare l\'immagine.');
-    }
+            <p>
+                La Pro Loco di Zagarolo promuove il territorio,
+                la cultura, le tradizioni e le iniziative locali,
+                creando occasioni di incontro e partecipazione.
+            </p>
 
-    if ($previousImage) {
-        $old = __DIR__ . '/' . $previousImage;
-        if (is_file($old)) @unlink($old);
-    }
+            <a class="text-link" href="<?= url('/chi-siamo') ?>">
+                Scopri chi siamo →
+            </a>
+        </div>
 
-    return 'assets/uploads/news/' . $filename;
-}
+        <div class="quote-card">
+            <span>&ldquo;</span>
 
-//require_once __DIR__ . '/../routes/web.php';    
+            <p>
+                Valorizzare Zagarolo significa raccontarne la storia
+                e costruirne insieme il futuro.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- NEWS -->
+<section id="news" class="section section-soft">
+    <div class="container">
+
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">AGGIORNAMENTI</p>
+                <h2>Ultime news</h2>
+            </div>
+
+            <a class="text-link" href="<?= url('/news') ?>">
+                Tutte le news →
+            </a>
+        </div>
+
+        <div class="news-grid">
+
+            <?php if (!empty($news)): ?>
+
+                <?php foreach ($news as $i => $item): ?>
+
+                    <article class="news-card">
+
+                        <?php if ($i === 0): ?>
+                            <div class="news-image image-one"></div>
+                        <?php elseif ($i === 1): ?>
+                            <div class="news-image image-two"></div>
+                        <?php else: ?>
+                            <div class="news-image image-three"></div>
+                        <?php endif; ?>
+
+                        <div class="news-body">
+
+                            <small>
+                                <?= e(date('d/m/Y', strtotime($item['published_at'] ?? $item['created_at']))) ?>
+                            </small>
+
+                            <h3>
+                                <?= e($item['title'] ?? 'Senza titolo') ?>
+                            </h3>
+
+                            <p>
+                                <?php
+                                $content = strip_tags($item['content'] ?? '');
+                                echo e(mb_substr($content, 0, 120));
+                                if (mb_strlen($content) > 120) echo '…';
+                                ?>
+                            </p>
+
+                            <?php if (!empty($item['slug'])): ?>
+                                <a href="<?= url('/news/' . rawurlencode($item['slug'])) ?>">
+                                    Leggi →
+                                </a>
+                            <?php endif; ?>
+
+                        </div>
+                    </article>
+
+                <?php endforeach; ?>
+
+            <?php else: ?>
+
+                <div class="empty-news">
+                    <p>Nessuna news disponibile al momento.</p>
+                </div>
+
+            <?php endif; ?>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ORARI -->
+<section id="orari" class="section">
+    <div class="container info-grid">
+
+        <div>
+            <p class="eyebrow">ORARI</p>
+
+            <h2>Quando trovarci</h2>
+
+            <p>
+                Gli orari della Pro Loco di Zagarolo.
+            </p>
+
+            <a class="text-link" href="<?= url('/orari') ?>">
+                Tutti gli orari →
+            </a>
+        </div>
+
+        <div class="hours-card">
+
+            <div>
+                <span>Lunedì — Venerdì</span>
+                <strong>09:00 — 13:00</strong>
+            </div>
+
+            <div>
+                <span>Sabato</span>
+                <strong>09:00 — 13:00</strong>
+            </div>
+
+            <div>
+                <span>Domenica</span>
+                <strong>Chiuso</strong>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONTATTI -->
+<section id="contatti" class="section section-soft">
+    <div class="container">
+
+        <div class="contact-box">
+
+            <p class="eyebrow">CONTATTI</p>
+
+            <h2>Hai bisogno di informazioni?</h2>
+
+            <p>
+                Per informazioni, eventi, iniziative e collaborazioni
+                puoi contattare la Pro Loco di Zagarolo.
+            </p>
+
+            <div class="actions">
+
+                <a class="btn primary" href="<?= url('/contatti') ?>">
+                    Contattaci
+                </a>
+
+                <a class="btn ghost" href="<?= url('/news') ?>">
+                    Tutte le news
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<?php require __DIR__ . '/../layouts/footer.php'; ?>
