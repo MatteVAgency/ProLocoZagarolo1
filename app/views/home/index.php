@@ -1,5 +1,6 @@
 <?php
-$pageCss = 'home';
+$pageTitle = 'Pro Loco Zagarolo';
+
 require __DIR__ . '/../layouts/header.php';
 ?>
 
@@ -54,7 +55,7 @@ require __DIR__ . '/../layouts/header.php';
         </div>
 
         <div class="quote-card">
-            <span>&ldquo;</span>
+            <span>“</span>
 
             <p>
                 Valorizzare Zagarolo significa raccontarne la storia
@@ -100,7 +101,19 @@ require __DIR__ . '/../layouts/header.php';
                         <div class="news-body">
 
                             <small>
-                                <?= e(date('d/m/Y', strtotime($item['published_at'] ?? $item['created_at']))) ?>
+                                <?php
+                                if (!empty($item['published_at'])) {
+                                    echo date(
+                                        'd/m/Y',
+                                        strtotime($item['published_at'])
+                                    );
+                                } elseif (!empty($item['created_at'])) {
+                                    echo date(
+                                        'd/m/Y',
+                                        strtotime($item['created_at'])
+                                    );
+                                }
+                                ?>
                             </small>
 
                             <h3>
@@ -109,16 +122,24 @@ require __DIR__ . '/../layouts/header.php';
 
                             <p>
                                 <?php
-                                $content = strip_tags($item['content'] ?? '');
+                                $content = strip_tags(
+                                    $item['content'] ?? ''
+                                );
+
                                 echo e(mb_substr($content, 0, 120));
-                                if (mb_strlen($content) > 120) echo '…';
+
+                                if (mb_strlen($content) > 120) {
+                                    echo '…';
+                                }
                                 ?>
                             </p>
 
                             <?php if (!empty($item['slug'])): ?>
-                                <a href="<?= url('/news/' . rawurlencode($item['slug'])) ?>">
+
+                                <a href="<?= url('/news/'.rawurlencode($item['slug'])) ?>">
                                     Leggi →
                                 </a>
+
                             <?php endif; ?>
 
                         </div>
@@ -152,8 +173,8 @@ require __DIR__ . '/../layouts/header.php';
                 Gli orari della Pro Loco di Zagarolo.
             </p>
 
-            <a class="text-link" href="<?= url('/orari') ?>">
-                Tutti gli orari →
+            <a class="text-link" href="<?= url('/contatti') ?>">
+                Contatti e informazioni →
             </a>
         </div>
 
@@ -201,7 +222,7 @@ require __DIR__ . '/../layouts/header.php';
                     Contattaci
                 </a>
 
-                <a class="btn ghost" href="<?= url('/news') ?>">
+                <a class="btn dark" href="<?= url('/news') ?>">
                     Tutte le news
                 </a>
 
@@ -212,4 +233,7 @@ require __DIR__ . '/../layouts/header.php';
     </div>
 </section>
 
-<?php require __DIR__ . '/../layouts/footer.php'; ?>
+
+<?php
+require __DIR__ . '/../layouts/footer.php';
+?>
