@@ -1,0 +1,14 @@
+# Front controller: instrada tutte le richieste su index.php,
+# tranne i file/cartelle che esistono davvero (css, js, immagini...)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Nasconde l'elenco dei file se manca un index
+Options -Indexes
