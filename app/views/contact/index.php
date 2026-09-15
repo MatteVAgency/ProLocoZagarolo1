@@ -1,7 +1,7 @@
 <?php $pageTitle='Contatti — Pro Loco Zagarolo'; $pageStyles=['contact']; require __DIR__.'/../layouts/header.php'; ?>
 <section class="page-head"><div class="container"><p class="eyebrow">CONTATTI</p><h1>Parliamo di Zagarolo.</h1><p>Per informazioni, collaborazioni o richieste, inviaci un messaggio.</p></div></section>
 <section class="section contact-section"><div class="container contact-grid">
-<div><div class="contact-list"><p>📍 Zagarolo, Roma</p><p>✉️ info@prolocozagarolo.it</p><p>☎️ +39 000 000 0000</p></div></div>
+<div><div class="contact-list"><p>📍 Zagarolo, Roma</p><p>✉️ info@prolocozagarolo.it</p><p>☎️ 06 957 69413</p></div></div>
 <form class="contact-form" action="<?= url('/contatti/invia') ?>" method="post">
 <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
 <h3>Scrivici</h3>
