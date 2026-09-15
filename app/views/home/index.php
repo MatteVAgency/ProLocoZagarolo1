@@ -178,26 +178,26 @@ require __DIR__ . '/../layouts/header.php';
                 Contatti e informazioni →
             </a>
         </div>
-
         <div class="hours-card">
-
             <div>
-                <span>Lunedì — Venerdì</span>
+                <span>La sede è aperta <strong>tutti </strong>i giorni con i seguenti orari</span>
+           
+                </div>
+            <div>
+                
+                <span>Mattina</span>
                 <strong>09:00 — 13:00</strong>
             </div>
 
             <div>
-                <span>Sabato</span>
-                <strong>09:00 — 13:00</strong>
+                <span>Pomeriggio</span>
+                <strong>15:00 — 19:00</strong>
             </div>
-
-            <div>
-                <span>Domenica</span>
-                <strong>Chiuso</strong>
-            </div>
-
+                
         </div>
-
+                <p class="hours-note">
+            Gli orari possono variare in base a eventi, festività o altre circostanze. Si consiglia di contattare la Pro Loco per confermare gli orari prima di recarsi presso la sede.
+        </p>
     </div>
 </section>
 
