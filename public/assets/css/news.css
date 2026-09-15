@@ -1,7 +1,7 @@
-/* ==========================================================================
-   news.css — Stili ESCLUSIVI delle pagine News (elenco e dettaglio)
-   Caricato in aggiunta a base.css in app/views/news/index.php e show.php
-   (.news-grid, .news-card, ecc. sono in base.css perché condivisi con la home)
-   ========================================================================== */
+/* ============================================================
+   PRO LOCO ZAGAROLO — news.css
+   Elenco e dettaglio news.
+   ============================================================ */
 
-.article{max-width:800px;font-size:18px}
+.article{max-width:760px;font-size:18px;color:var(--ink-soft)}
+.article small{color:var(--muted);letter-spacing:.5px}

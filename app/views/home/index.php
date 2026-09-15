@@ -1,5 +1,6 @@
 <?php
 $pageTitle = 'Pro Loco Zagarolo';
+$pageStyles = ['home'];
 
 require __DIR__ . '/../layouts/header.php';
 ?>

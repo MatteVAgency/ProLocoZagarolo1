@@ -1,0 +1,16 @@
+/* ============================================================
+   PRO LOCO ZAGAROLO — auth.css
+   Pagina di login amministratore.
+   ============================================================ */
+
+.auth-card{
+  position:relative;overflow:hidden;
+  background:#fff;padding:40px;display:grid;gap:16px;
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);border:1px solid var(--line);
+}
+.auth-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--blue-700)}
+.auth-card input{
+  width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:var(--radius-sm);
+  font:inherit;background:var(--mist);transition:border-color var(--fast),box-shadow var(--fast);
+}
+.auth-card input:focus{outline:none;border-color:var(--blue-600);background:#fff;box-shadow:0 0 0 4px rgba(21,90,148,.12)}

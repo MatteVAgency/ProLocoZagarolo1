@@ -15,17 +15,15 @@
     <link rel="icon" type="image/svg+xml" href="<?= url('/assets/favicon.svg') ?>">
     <meta name="theme-color" content="#0a2a4d">
 
-   <link
-    rel="stylesheet"
-    href="<?= url('/assets/css/style.css') ?>?v=5"
->
+    <link rel="stylesheet" href="<?= url('/assets/css/base.css') ?>?v=5">
+    <?php foreach (($pageStyles ?? []) as $sheet): ?>
+        <link rel="stylesheet" href="<?= url('/assets/css/'.$sheet.'.css') ?>?v=5">
+    <?php endforeach; ?>
 </head>
 
 <body>
 
 <header class="site-header">
-
-    <div class="tricolor-bar"></div>
 
     <div class="container nav">
 
@@ -34,8 +32,8 @@
             <strong>ZAGAROLO</strong>
         </a>
 
-        <button class="menu-toggle" type="button">
-            ☰
+        <button class="menu-toggle" type="button" aria-label="Apri il menu" aria-expanded="false">
+            <span></span><span></span><span></span>
         </button>
 
         <nav>
