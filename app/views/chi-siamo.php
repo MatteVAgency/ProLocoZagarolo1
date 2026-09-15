@@ -20,7 +20,7 @@
             </p>
         </div>
         <div class="quote-card">
-            <span>&ldquo;</span>
+            <!-- <span>&ldquo;</span> TODO, revisionare--> 
             <p>Valorizzare Zagarolo significa raccontarne la storia e costruirne insieme il futuro.</p>
         </div>
     </div>
