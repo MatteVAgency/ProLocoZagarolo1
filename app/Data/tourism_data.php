@@ -119,3 +119,32 @@ function turismo_bnb(): array
         ],
     ];
 }
+function turismo_ristoranti(): array
+{
+    // Dati di esempio: la Pro Loco fornirà l'elenco reale dei locali
+    // convenzionati/consigliati. Struttura pensata per essere compilata
+    // facilmente una volta ricevuti i contenuti definitivi.
+    return [
+        [
+            'nome' => 'Ristorante Da Compilare 1',
+            'descrizione' => 'Testo descrittivo da inserire (tipo di cucina, ambiente, specialità).',
+            'indirizzo' => 'Via da definire, Zagarolo',
+            'contatti' => '000 000 0000',
+            'immagine' => ['tipo' => 'placeholder', 'classe' => 'ph-3'],
+        ],
+        [
+            'nome' => 'Ristorante Da Compilare 2',
+            'descrizione' => 'Testo descrittivo da inserire (tipo di cucina, ambiente, specialità).',
+            'indirizzo' => 'Via da definire, Zagarolo',
+            'contatti' => '000 000 0000',
+            'immagine' => ['tipo' => 'placeholder', 'classe' => 'ph-5'],
+        ],
+        [
+            'nome' => 'Ristorante Da Compilare 3',
+            'descrizione' => 'Testo descrittivo da inserire (tipo di cucina, ambiente, specialità).',
+            'indirizzo' => 'Via da definire, Zagarolo',
+            'contatti' => '000 000 0000',
+            'immagine' => ['tipo' => 'placeholder', 'classe' => 'ph-1'],
+        ],
+    ];
+}   

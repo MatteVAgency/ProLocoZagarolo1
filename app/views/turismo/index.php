@@ -25,6 +25,14 @@
                 <span class="text-link">Vedi le strutture →</span>
             </div>
         </a>
+        <a class="turismo-hub-card" href="<?= url('/turismo/dove-mangiare') ?>">
+            <div class="carousel-placeholder ph-3 hub-thumb"><span>Dove mangiare</span></div>
+            <div class="turismo-hub-body">
+                <h2>Dove mangiare</h2>
+                <p>Ristoranti e locali dove gustare la cucina del territorio.</p>
+                <span class="text-link">Scopri i locali →</span>
+            </div>
+        </a>
     </div>
 </section>
 <?php require __DIR__ . '/../layouts/footer.php'; ?>

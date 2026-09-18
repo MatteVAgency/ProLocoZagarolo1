@@ -32,6 +32,9 @@ switch (true) {
     case $uri === '/turismo/dove-dormire':
         (new TurismoController())->doveDormire();
         break;
+    case $uri === '/turismo/dove-mangiare':
+        (new TurismoController())->doveMangiare();
+    break;
     case $uri === '/contatti':
         (new ContactController())->index();
         break;

@@ -23,4 +23,9 @@ class TurismoController
         $bnb = turismo_bnb();
         require __DIR__ . '/../views/turismo/bb.php';
     }
+    public function doveMangiare(): void
+    {
+    $ristoranti = turismo_ristoranti();
+    require __DIR__ . '/../views/turismo/ristoranti.php';
+    }
 }
