@@ -14,11 +14,11 @@
 
     <link
         rel="stylesheet"
-        href="/ProLocoZagarolo1/assets/css/style.css"
+        <link rel="stylesheet" href="<?= url('/assets/css/style.css') ?>">
     >
     <link
         rel="stylesheet"
-        href="/ProLocoZagarolo1/assets/css/turismo.css"
+        <link rel="stylesheet" href="<?= url('/assets/css/turismo.css') ?>">
     >
 </head>
 
