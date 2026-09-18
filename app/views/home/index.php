@@ -180,7 +180,7 @@ require __DIR__ . '/../layouts/header.php';
         </div>
         <div class="hours-card">
             <div>
-                <span>La sede è aperta <strong>tutti </strong>i giorni con i seguenti orari</span>
+                <span>La sede è aperta dal <strong>lunedì </strong>alla <strong>domenica</strong> nei seguenti orari:</span>
            
                 </div>
             <div>

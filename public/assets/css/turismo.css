@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Turismo — sezione Monumenti / Dove dormire
+   Foglio separato da style.css per tenere isolati i nuovi componenti
+   (dropdown di navigazione, card monumenti, caroselli, placeholder foto).
+   ========================================================================== */
+
+/* ---- Placeholder foto "carine e sparse" in attesa degli scatti reali ---- */
+.carousel-placeholder{
+    position:relative;height:100%;width:100%;min-height:220px;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font:600 13px/1.4 'DM Sans',sans-serif;letter-spacing:1px;text-transform:uppercase;
+}
+.carousel-placeholder span{background:rgba(0,0,0,.28);padding:6px 14px;border-radius:99px}
+.ph-1{background:linear-gradient(135deg,#40352b,#b28b50)}
+.ph-2{background:linear-gradient(135deg,#8b8274,#d8d0c1)}
+.ph-3{background:linear-gradient(135deg,#2e3734,#7c8c82)}
+.ph-4{background:linear-gradient(135deg,#7a3b2e,#d8a15c)}
+.ph-5{background:linear-gradient(135deg,#4a4638,#a77a32)}
+.ph-6{background:linear-gradient(135deg,#33413d,#9db3a1)}
+
+/* ---- Hub Turismo (pagina /turismo) ---- */
+.turismo-hub{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.turismo-hub-card{display:block;background:#fff;text-decoration:none;color:inherit;overflow:hidden;border:1px solid #e6e1d6;transition:transform .15s ease,box-shadow .15s ease}
+.turismo-hub-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(23,23,23,.08)}
+.hub-thumb{height:200px;min-height:0}
+.turismo-hub-body{padding:24px}
+.turismo-hub-body h2{margin:0 0 8px;font-size:24px}
+.turismo-hub-body p{color:var(--muted);margin:0 0 12px}
+
+/* ---- Griglia monumenti / B&B ---- */
+.monumenti-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.monumento-card{background:#fff;border:1px solid #e6e1d6;overflow:hidden}
+.monumento-body{padding:22px}
+.monumento-body h2{margin:0 0 4px;font-size:22px}
+.monumento-body small{display:block;color:var(--accent);font-weight:700;letter-spacing:.5px;margin-bottom:10px}
+.monumento-body p{color:var(--muted);margin:0 0 10px}
+.monumento-indirizzo{font-size:13px;color:var(--ink)!important}
+.pending-note{background:#f7f1de;color:#7a5a12;padding:12px 14px;border-left:3px solid var(--accent);font-size:14px}
+
+/* ---- Carosello ---- */
+.carousel{position:relative;height:230px;overflow:hidden;background:#eee}
+.carousel-track{display:flex;height:100%;transition:transform .35s ease}
+.carousel-slide{flex:0 0 100%;height:100%}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);border:0;background:rgba(0,0,0,.35);color:#fff;width:34px;height:34px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.carousel-nav:hover{background:rgba(0,0,0,.55)}
+.carousel-nav.prev{left:10px}
+.carousel-nav.next{right:10px}
+.carousel-dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.carousel-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}
+.carousel-dot.is-active{background:#fff}
+
+/* ---- Dropdown "Turismo" nel menu principale ---- */
+.nav-item{position:relative}
+.nav-item > a{display:flex;align-items:center;gap:4px}
+.dropdown-menu{
+    list-style:none;margin:0;padding:10px 0;position:absolute;top:100%;left:0;
+    background:#1d1d1b;min-width:210px;box-shadow:0 18px 30px rgba(0,0,0,.25);
+    opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .15s ease,transform .15s ease;
+}
+.dropdown-menu li a{display:block;padding:10px 18px;color:#fff!important;font-size:14px;white-space:nowrap}
+.dropdown-menu li a:hover{color:var(--accent)!important}
+.nav-item:hover .dropdown-menu,
+.nav-item.open .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+
+@media(max-width:800px){
+    .monumenti-grid,.turismo-hub{grid-template-columns:1fr}
+    .dropdown-menu{position:static;box-shadow:none;background:transparent;display:none;padding:0 0 0 14px;transform:none}
+    .nav-item.open .dropdown-menu{display:block}
+    .dropdown-menu li a{color:#fff!important;padding:8px 0}
+}

@@ -12,13 +12,14 @@
         content="Pro Loco di Zagarolo — territorio, cultura, iniziative e comunicazioni."
     >
 
-    <link rel="icon" type="image/svg+xml" href="<?= url('/assets/favicon.svg') ?>">
-    <meta name="theme-color" content="#0a2a4d">
-
-    <link rel="stylesheet" href="<?= url('/assets/css/base.css') ?>?v=5">
-    <?php foreach (($pageStyles ?? []) as $sheet): ?>
-        <link rel="stylesheet" href="<?= url('/assets/css/'.$sheet.'.css') ?>?v=5">
-    <?php endforeach; ?>
+    <link
+        rel="stylesheet"
+        href="/ProLocoZagarolo1/assets/css/style.css"
+    >
+    <link
+        rel="stylesheet"
+        href="/ProLocoZagarolo1/assets/css/turismo.css"
+    >
 </head>
 
 <body>
@@ -27,36 +28,46 @@
 
     <div class="container nav">
 
-        <a class="brand" href="<?= url('/') ?>">
+        <a class="brand" href="/ProLocoZagarolo1/">
             <span>PRO LOCO</span>
             <strong>ZAGAROLO</strong>
         </a>
 
-        <button class="menu-toggle" type="button" aria-label="Apri il menu" aria-expanded="false">
-            <span></span><span></span><span></span>
+        <button class="menu-toggle" type="button">
+            ☰
         </button>
 
         <nav>
 
-            <a href="<?= url('/') ?>#chi-siamo">
+            <a href="/ProLocoZagarolo1/#chi-siamo">
                 Chi siamo
             </a>
 
-            <a href="<?= url('/news') ?>">
+            <a href="/ProLocoZagarolo1/news">
                 News
             </a>
 
-            <a href="<?= url('/') ?>#orari">
+            <div class="nav-item">
+                <a href="/ProLocoZagarolo1/turismo">
+                    Turismo ▾
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/ProLocoZagarolo1/turismo/monumenti">Monumenti</a></li>
+                    <li><a href="/ProLocoZagarolo1/turismo/dove-dormire">Dove dormire</a></li>
+                </ul>
+            </div>
+
+            <a href="/ProLocoZagarolo1/#orari">
                 Orari
             </a>
 
-            <a href="<?= url('/contatti') ?>">
+            <a href="/ProLocoZagarolo1/contatti">
                 Contatti
             </a>
 
             <a
                 class="nav-admin"
-                href="<?= url('/admin/login') ?>"
+                href="/ProLocoZagarolo1/admin/login"
             >
                 Area admin
             </a>

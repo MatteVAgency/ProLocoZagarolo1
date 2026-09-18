@@ -8,26 +8,29 @@ if ($base && $base !== '/' && str_starts_with($uri, $base)) {
 }
 
 require_once __DIR__ . '/../app/controllers/HomeController.php';
-require_once __DIR__ . '/../app/controllers/PageController.php';
 require_once __DIR__ . '/../app/controllers/NewsController.php';
 require_once __DIR__ . '/../app/controllers/ContactController.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
+require_once __DIR__ . '/../app/controllers/TurismoController.php';
 
 switch (true) {
     case $uri === '/' || $uri === '/index.php':
         (new HomeController())->index();
-        break;
-    case $uri === '/chi-siamo':
-        (new PageController())->chiSiamo();
-        break;
-    case $uri === '/orari':
-        (new PageController())->orari();
         break;
     case $uri === '/news':
         (new NewsController())->index();
         break;
     case preg_match('#^/news/([^/]+)$#', $uri, $m):
         (new NewsController())->show($m[1]);
+        break;
+    case $uri === '/turismo':
+        (new TurismoController())->index();
+        break;
+    case $uri === '/turismo/monumenti':
+        (new TurismoController())->monumenti();
+        break;
+    case $uri === '/turismo/dove-dormire':
+        (new TurismoController())->doveDormire();
         break;
     case $uri === '/contatti':
         (new ContactController())->index();
@@ -55,6 +58,5 @@ switch (true) {
         break;
     default:
         http_response_code(404);
-        $pageTitle = 'Pagina non trovata — Pro Loco Zagarolo';
-        require __DIR__ . '/../app/views/errors/404.php';
+        echo '404 — Pagina non trovata';
 }
